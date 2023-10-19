@@ -7,8 +7,7 @@
 The purpose of this lab is to practice Object-Oriented Programming (OOP) in Python by designing a well-structured program. You will start by planning your class structure using UML and then implement it in Python.
 
 ## Task
-
-You are required to create the following geometric classes:
+create the following geometric classes:
 
 - Rectangle
 - Circle
@@ -47,5 +46,7 @@ Your classes should be in a `.py` file. They should be usable in the following m
 
 ```python
 # Example usage
+
 rectangle = Rectangle(x=0, y=0, width=10, height=20)
+
 circle = Circle(x=0, y=0, radius=5)
