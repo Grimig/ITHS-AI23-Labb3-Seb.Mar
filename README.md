@@ -1,12 +1,11 @@
-# ITHS-AI23-Labb3-Seb.Mar
-
 # Geometri OOP
 
 ## Purpose
 
-The purpose of this lab is to practice Object-Oriented Programming (OOP) in Python by designing a well-structured program. You will start by planning your class structure using UML and then implement it in Python.
+- The purpose of this lab is to practice Object-Oriented Programming (OOP) in Python by designing a well-structured program. You will start by planning your class structure using UML and then implement it in Python.
 
 ## Task
+
 create the following geometric classes:
 
 - Rectangle

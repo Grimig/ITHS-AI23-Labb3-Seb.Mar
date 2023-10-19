@@ -1,8 +1,8 @@
 
-
 class Rectangle:
-    def __init__(self, x, y, width, height):
-        'Initialize a Rectangle instance with position and dimensions.'
+    def __init__(self, x: float, y: float, width: float, height: float) -> None:
+        """
+        Initialize a Rectangle instance with position and dimensions."""
         if width <= 0 or height <= 0:
             raise ValueError("Width and height must be positive values.")
         self.x = x
@@ -12,66 +12,86 @@ class Rectangle:
 
     @property
     def area(self):
-        'Calculate and return the area of the rectangle.'
+        """
+        Calculate and return the area of the rectangle."""
         return self.width * self.height
 
     @property
     def perimeter(self):
-        'Calculate and return the perimeter of the rectangle.'
+        """
+        Calculate and return the perimeter of the rectangle"""
         return 2 * (self.width + self.height)
 
-    @property
-    def pos_x(self):
-        'Return the x-coordinate of the rectangle.'
-        return self.x
-
-    @property
-    def pos_y(self):
-        'Return the y-coordinate'
-        return self.y
-
     def translate(self, dx, dy):
-        'Move the rectangle by dx and dy.'
+        """
+        Move the rectangle by dx and dy."""
+        if not isinstance(dx, (int, float)) or not isinstance(dy, (int, float)):
+            raise TypeError("dx and dy must be numbers.")
         self.x += dx
         self.y += dy
 
-    def is_point_inside(self, point_x, point_y):
-        'Check if a point is inside the rectangle.'
+    def is_inside(self, point_x, point_y):
+        """
+        Check if a point is inside the rectangle."""
+        if not isinstance(point_x, (int, float)):
+            raise TypeError("point_x must be a number.")
+        if not isinstance(point_y, (int, float)):
+            raise TypeError("point_y must be a number.")
         return (
-            self.x <= point_x <= self.x + self.width and
-            self.y <= point_y <= self.y + self.height
+            self.x < point_x < self.x + self.width
+            and self.y < point_y < self.y + self.height
         )
 
+    @property
     def is_square(self):
-        'Check if the rectangle is a square.'
+        """
+        Return True if the rectangle is a square."""
         return self.width == self.height
 
     def __eq__(self, other):
-        'Check if two rectangles have the same area.'
+        """
+        Check if two rectangles have the same area."""
+        if not isinstance(other, Rectangle):
+            raise TypeError("Comparison with non-Rectangle object.")
         return self.area == other.area
 
     def __lt__(self, other):
-        'Check if the rectangle has a smaller area than another rectangle.'
+        """
+        Check if the rectangle has a smaller area than another rectangle."""
+        if not isinstance(other, Rectangle):
+            raise TypeError("Comparison with non-Rectangle object.")
         return self.area < other.area
 
     def __gt__(self, other):
-        'Check if the rectangle has a larger area than another rectangle.'
+        """
+        Check if the rectangle has a larger area than another rectangle."""
+        if not isinstance(other, Rectangle):
+            raise TypeError("Comparison with non-Rectangle object.")
         return self.area > other.area
 
     def __le__(self, other):
-        'Check if the rectangle has a smaller or equal area than another rectangle.'
+        """
+        Check if the rectangle has a smaller or equal area than another rectangle."""
+        if not isinstance(other, Rectangle):
+            raise TypeError("Comparison with non-Rectangle object.")
         return self.area <= other.area
 
     def __ge__(self, other):
-        'Check if the rectangle has a larger or equal area than another rectangle.'
+        """
+        Check if the rectangle has a larger or equal area than another rectangle."""
+        if not isinstance(other, Rectangle):
+            raise TypeError("Comparison with non-Rectangle object.")
         return self.area >= other.area
 
     def __repr__(self):
-        'Return the formal string representation of the rectangle.'
-        return f"Rectangle:x={self.x},y={self.y}, " \
-               f"width={self.width}, height={self.height})"
+        """Return repr string representation of the rectangle."""
+        return f"{self.__class__.__name__}(x={self.x}, y={self.y}, width={self.width}, height={self.height})"
 
     def __str__(self):
-        'Return the informal string representation of the rectangle.'
-        return f"Rectangle (Position=(x={self.x}, Position=(y={self.y}), Width={self.width}, " \
-               f"Height={self.height}, Area={self.area}, Perimeter={self.perimeter}"
+        """
+        Return str string representation of the rectangle."""
+        return (
+            f"{self.__class__.__name__}(x={self.x}, y={self.y}), "
+            f"Width={self.width}, Height={self.height}, "
+            f"Area={self.area}, Perimeter={self.perimeter})"
+        )
