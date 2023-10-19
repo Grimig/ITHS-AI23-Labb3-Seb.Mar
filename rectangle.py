@@ -1,6 +1,8 @@
 
+
 class Rectangle:
     def __init__(self, x, y, width, height):
+        'Initialize a Rectangle instance with position and dimensions.'
         if width <= 0 or height <= 0:
             raise ValueError("Width and height must be positive values.")
         self.x = x
@@ -10,57 +12,66 @@ class Rectangle:
 
     @property
     def area(self):
+        'Calculate and return the area of the rectangle.'
         return self.width * self.height
 
     @property
     def perimeter(self):
+        'Calculate and return the perimeter of the rectangle.'
         return 2 * (self.width + self.height)
 
-    @property ##plotlib?
-    def position_x(self):
+    @property
+    def pos_x(self):
+        'Return the x-coordinate of the rectangle.'
         return self.x
 
-    @property #plotlib?
-    def position_y(self):
+    @property
+    def pos_y(self):
+        'Return the y-coordinate'
         return self.y
 
     def translate(self, dx, dy):
-        # Method to move the x and y coordinates by dx and dy.
+        'Move the rectangle by dx and dy.'
         self.x += dx
         self.y += dy
 
     def is_point_inside(self, point_x, point_y):
-        # Method to check if a point (point_x, point_y) is inside the shape.
+        'Check if a point is inside the rectangle.'
         return (
             self.x <= point_x <= self.x + self.width and
             self.y <= point_y <= self.y + self.height
         )
 
-    def is_unit_circle(self):
-        # Method to check if the shape is a unit circle (circle with radius 1).
-        return self.width == self.height == 2
-
     def is_square(self):
-        # Method to check if the shape is a square (width and height are equal).
+        'Check if the rectangle is a square.'
         return self.width == self.height
 
-    def __eq__(self, other): #equality
+    def __eq__(self, other):
+        'Check if two rectangles have the same area.'
         return self.area == other.area
 
-    def __lt__(self, other): #less than
+    def __lt__(self, other):
+        'Check if the rectangle has a smaller area than another rectangle.'
         return self.area < other.area
 
-    def __gt__(self, other): #greater than
+    def __gt__(self, other):
+        'Check if the rectangle has a larger area than another rectangle.'
         return self.area > other.area
 
-    def __le__(self, other): #less than
+    def __le__(self, other):
+        'Check if the rectangle has a smaller or equal area than another rectangle.'
         return self.area <= other.area
 
-    def __ge__(self, other): #greater than
+    def __ge__(self, other):
+        'Check if the rectangle has a larger or equal area than another rectangle.'
         return self.area >= other.area
 
-    def __repr__(self): #representation
-        return f"Rectangle: (Position: x={self.x}, Position: y={self.y}, width={self.width}, height={self.height})"
+    def __repr__(self):
+        'Return the formal string representation of the rectangle.'
+        return f"Rectangle:x={self.x},y={self.y}, " \
+               f"width={self.width}, height={self.height})"
 
-    def __str__(self): #string representation
-        return f"Rectangle (x={self.x}, y={self.y}), Width={self.width}, Height={self.height}, Area={self.area}, Perimeter={self.perimeter}"
+    def __str__(self):
+        'Return the informal string representation of the rectangle.'
+        return f"Rectangle (Position=(x={self.x}, Position=(y={self.y}), Width={self.width}, " \
+               f"Height={self.height}, Area={self.area}, Perimeter={self.perimeter}"
