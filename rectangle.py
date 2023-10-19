@@ -42,11 +42,11 @@ class Rectangle:
             and self.y < point_y < self.y + self.height
         )
 
-    @property
     def is_square(self):
         """
         Return True if the rectangle is a square."""
         return self.width == self.height
+
 
     def __eq__(self, other):
         """
